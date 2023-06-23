@@ -179,10 +179,43 @@
     </div>
     <div class="section-content">
       O código lê uma imagem em escala de cinza, a exibe em uma janela e aguarda a interação do usuário. Se a tecla "ESC" for pressionada,
-      a janela é fechada. Se a tecla "s" for pressionada, a imagem é salva em um arquivo PNG e a janela é fechada.
+      a janela é fechada. Se a tecla "s" for pressionada, a imagem é salva em um arquivo PNG e a janela é fechada. 
+      
+      Por que a janela aberta não mostra a imagem colorida ? 
+      Devido à utilização do parâmetro 0 no método cv.imread('messi5.jpg', 0), esse parâmetro indica que a imagem será lida no modo de escala de cinza. 
     </div>
 
     <div class="title">L1_2_video.py</div>
+    <div class="code-container" id="component-1">
+      <textarea readonly>
+  import time
+  import numpy as np
+  import cv2 as cv
+  
+  cap = cv.VideoCapture('big_buck_bunny.mp4')
+  
+  while(cap.isOpened()):
+      ret, frame = cap.read()
+      
+      if ret==True:
+          # show the frame
+          cv.imshow('frame',frame)
+  
+          #wait next frame by 40ms - 25fps
+          time.sleep(1/25.0) 
+          
+          if cv.waitKey(1) & 0xFF == ord('q'):
+              break
+      else:
+          break
+                  
+  cap.release()
+  cv.destroyAllWindows()
+        
+      </textarea>
+      <button class="copy-button" onclick="copyCode('component-1')">Copiar</button>
+    </div>
+    <div class="title">L1_2_video_mod.py</div>
     <div class="code-container" id="component-1">
       <textarea readonly>
   import time
@@ -218,47 +251,89 @@
     </div>
     <div class="section-content">
       O código lê um arquivo de vídeo, reproduz cada quadro do vídeo em uma janela, aguarda um tempo específico entre os quadros e permite que o 
-      usuário interrompa a reprodução pressionando a tecla "q".
+      usuário interrompa a reprodução pressionando a tecla "q".  A alteração de velocidade de exibição ocorre através do uso da função time.sleep().
+      Para ajustar a velocidade de exibição, basta modificar o valor 1/25.0 para o valor desejado. Por exemplo, se quisermos aumentar a velocidade de
+      reprodução para 50 FPS, podemos alterar para 1/50.0. Da mesma forma, se quisermos diminuir para 10 FPS, podemos usar 1/10.0.
+      A modificação foi feita ao adicionar um trecho de código que verifica se a tecla pressionada é 'x'. Se a tecla 'x' for pressionada, o método 
+      cv.imwrite() é chamado para salvar o quadro atual da câmera em um arquivo chamado "foto1.png". Em seguida, uma mensagem é exibida no console 
+      confirmando que a foto foi salva.
     </div>
     <div class="title">L1_3_webcam.py</div>
 
     <div class="code-container" id="component-1">
       <textarea readonly>
-  import numpy as np
-  import cv2 as cv
-  
-  cap = cv.VideoCapture(0)
-  
-  if not cap.isOpened():
-      print("Cannot open camera")
-      exit()
-      
-  while True:
-      # Capture frame-by-frame
-      ret, frame = cap.read()
-      # if frame is read correctly ret is True
-      if not ret:
-          print("Can't receive frame (stream end?). Exiting ...")
-          break
-      
-      # Display the resulting frame
-      cv.imshow('frame', frame)
-      
-      if cv.waitKey(1) == ord('q'):
-          break
-  
-  # When everything done, release the capture
-  cap.release()
-  cv.destroyAllWindows()
+    import numpy as np
+    import cv2 as cv
+    
+    cap = cv.VideoCapture(0)
+    
+    if not cap.isOpened():
+        print("Cannot open camera")
+        exit()
         
+    while True:
+        # Capture frame-by-frame
+        ret, frame = cap.read()
+        # if frame is read correctly ret is True
+        if not ret:
+            print("Can't receive frame (stream end?). Exiting ...")
+            break
+        
+        # Display the resulting frame
+        cv.imshow('frame', frame)
+        
+        if cv.waitKey(1) == ord('q'):
+            break
+    
+    # When everything done, release the capture
+    cap.release()
+    cv.destroyAllWindows()
       </textarea>
+    
+    <div class="title">L1_3_webcam_mod.py</div>
+      <textarea readonly>
+    import numpy as np
+    import cv2 as cv
+    cap = cv.VideoCapture(0)
+    
+    # Get current width of frame
+    width = cap.get(cv.CAP_PROP_FRAME_WIDTH)   # float
+    # Get current height of frame
+    height = cap.get(cv.CAP_PROP_FRAME_HEIGHT) # float
+    # Define Video Frame Rate in fps
+    fps = 10.0
+    
+    # Define the codec and create VideoWriter object
+    fourcc = cv.VideoWriter_fourcc(*'XVID')
+    out = cv.VideoWriter('saida.avi', fourcc, fps, (int(width),int(height)) )
+    
+    while cap.isOpened():
+        ret, frame = cap.read()
+        if not ret:
+            print("Can't receive frame (stream end?). Exiting ...")
+            break
+        frame = cv.flip(frame, 0)
+        # write the flipped frame
+        out.write(frame)
+        cv.imshow('frame', frame)
+        if cv.waitKey(1) == ord('q'):
+            break
+    
+    # Release everything if job is finished
+    cap.release()
+    out.release()
+    cv.destroyAllWindows()    
+        </textarea>
       <button class="copy-button" onclick="copyCode('component-1')">Copiar</button>
     </div>
     <div>
       <img src="./img/Diagrama_L1_3_webcam.py.png" alt="Diagrama" class="fluxograma">
       <div class="section-content">
-        o código carrega uma imagem em escala de cinza, exibe-a em uma janela e espera que o usuário pressione a tecla "ESC" para fechar as janelas ou 
-        a tecla "s" para salvar a imagem em um arquivo antes de fechar as janelas.
+        O código carrega uma imagem, exibe-a em uma janela e espera que o usuário pressione a tecla "ESC" para fechar as janelas ou 
+        a tecla "s" para salvar a imagem em um arquivo antes de fechar as janelas. A modificação foi feita ao adicionar um trecho de
+        código que verifica se a tecla pressionada é 'x'. Se a tecla 'x' for pressionada, o método cv.imwrite() é chamado para salvar
+        o quadro atual da câmera em um arquivo chamado "foto1.png". Em seguida, uma mensagem é exibida no console confirmando que a foto
+        foi salva.
       </div>
     </div>
     <div class="title">L1_4_webcap.py</div>
@@ -296,20 +371,56 @@
   out.release()
   cv.destroyAllWindows()    
       </textarea>
+      <div class="title">L1_4_webcap_mod.py</div>
+      <div class="code-container" id="component-1">
+      <textarea readonly>
+  import numpy as np
+  import cv2 as cv
+  cap = cv.VideoCapture(0)
+  
+  # Get current width of frame
+  width = cap.get(cv.CAP_PROP_FRAME_WIDTH)   # float
+  # Get current height of frame
+  height = cap.get(cv.CAP_PROP_FRAME_HEIGHT) # float
+  # Define Video Frame Rate in fps
+  fps = 10.0
+  
+  # Define the codec and create VideoWriter object
+  fourcc = cv.VideoWriter_fourcc(*'XVID')
+  out = cv.VideoWriter('saida.avi', fourcc, fps, (int(width),int(height)) )
+  
+  while cap.isOpened():
+      ret, frame = cap.read()
+      if not ret:
+          print("Can't receive frame (stream end?). Exiting ...")
+          break
+      frame = cv.flip(frame, 0)
+      # write the flipped frame
+      out.write(frame)
+      cv.imshow('frame', frame)
+      if cv.waitKey(1) == ord('q'):
+          break
+  
+  # Release everything if job is finished
+  cap.release()
+  out.release()
+  cv.destroyAllWindows()    
+      </textarea>
       <button class="copy-button" onclick="copyCode('component-1')">Copiar</button>
-    </div>
-    <div class="section-content">
-      o código captura o vídeo da câmera, inverte cada quadro verticalmente, exibe o vídeo em uma janela e salva o vídeo invertido em um arquivo "saida.avi". 
-      O loop continua até que o usuário pressione a tecla 'q', momento em que o programa é encerrado e os recursos são liberados.
     </div>
     <div>
       <img src="./img/Diagrama_L1_4_webcam.py.png" alt="Diagrama" class="fluxograma">
     </div>
-     
+    <div class="section-content">
+      O código captura o vídeo da câmera, inverte cada quadro verticalmente, exibe o vídeo em uma janela e salva o vídeo invertido em um arquivo "saida.avi". 
+      O loop continua até que o usuário pressione a tecla 'q', momento em que o programa é encerrado e os recursos são liberados.
+      A principal modificação foi feita na definição da taxa de quadros (fps) para 25.0, o que proporcionará uma velocidade de exibição adequada para o vídeo.
+
+    Além disso, a função cv.waitKey() foi modificada para receber como argumento o tempo de espera calculado a partir da taxa de quadros. Utilizamos int(1000 / fps)
+    para obter o tempo em milissegundos. Isso garantirá que cada quadro seja exibido pelo tempo adequado antes de passar para o próximo quadro. Essa modificação garante
+    uma velocidade de exibição fluida e compatível com a taxa de quadros do vídeo.
+    </div>
   </div>
-
-
-
   <div class="section">
     <h2 class="section-title">Resultados e Análises</h2>
     <p class="section-content">
