@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Atividade 1</title>
+  <title>Atividade 2</title>
   <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
@@ -10,18 +10,20 @@
     <h1>WizardsVideo</h1>
     <p>Danilo Misura de Oliveira          - 11006514</p>
     <p>Gabriel da Fonseca Nunes           - 11201921456<p>
-    <p>Thiago ...                         - 112017<p>
+    <p>Thiago Vinicius                    - 112017<p>
   </div>
 
   <div class="section">
     <h1 class="section-title">Anexos</h1>
     <p class="section-content">
     <p> 
-      <a href="https://moodle.ufabc.edu.br/pluginfile.php/576663/mod_resource/content/2/L1_parte1_ambiente_n_opencv.txt" download>
-        Configuração Ambiente Miniconda e OpenCV 4.7 para o Ubuntu 22.04
-      </a>
+
     </p>
-      <a href="Lab1_arquivos.zip" download>Arquivos Lab 1</a>
+    <a href="https://docs.opencv.org/4.x/d4/d13/tutorial_py_filtering.html"> Tutorial Filtragem Imagens OpenCV </a> 
+    </p>
+    <p>
+      <a href="https://docs.opencv.org/4.x/dc/dd3/tutorial_gausian_median_blur_bilateral_filter.html"> 
+        Material Complementar Filtragem Imagens OpenCV </a>
     </p>
   </div>
 
@@ -32,15 +34,19 @@
     <p class="section-content">
       O processamento de vídeo desempenha um papel fundamental em diversas áreas, 
       como visão computacional, realidade virtual, jogos, vigilância por vídeo, entre outros. 
-      <br>O foco deste laboratório é introduzir os fundamentos do processamento de vídeo utilizando 
-      a biblioteca OpenCV e realizar atividades iniciais de captura de imagem e vídeo.<br> 
+      <br>O foco deste laboratório é discutir sobre metodos de filtragem a partir
+      a biblioteca OpenCV e aplica-las em imagem e vídeo.<br> 
     </p>
     <p class="section-content">
       <h2 class="section-title">Objetivos</h2>
       <ul class="section-content">
-        <li>Iniciar os trabalhos no Ubuntu com o OpenCV</li>
-        <li>Conhecer os comandos para visualizar e gravar imagens e videos</li>
-        <li>Gravar um Vídeo e mostrá-lo no relatório</li>
+        <li>Aplicar cada um dos tipos de filtragem a partir 
+          <a href="https://docs.opencv.org/4.x/d4/d13/tutorial_py_filtering.html"> Tutorial Filtragem Imagens OpenCV </a>  
+        </li>
+        <li>
+          Com o programa que faz a leitura da webcam, realize cada um dos experimentos de filtragem do tutorial, na imagem de entrada.
+          Salve os arquivos de imagem filtrada gerados através do próprio programa. 
+        </li>
       </ul>
     </p>
       
@@ -87,38 +93,18 @@
       </p>  
       
       <p class="section-content">
-        <b>Pixel e Matriz de Pixels</b>: Pixel e Matriz de Pixels: Um pixel é o menor elemento em uma imagem ou quadro de vídeo e representa um valor
+        <b>Pixel e Matriz de Pixels</b>: Um pixel é o menor elemento em uma imagem ou quadro de vídeo e representa um valor
         numérico que define sua cor ou intensidade. Uma matriz de pixels é uma grade bidimensional de pixels que compõem uma imagem ou quadro de vídeo.
       </p>
-      
-      <p class="section-content">
-        <b>Espaço de Cores</b>: Existem vários espaços de cores utilizados para representar e manipular as cores em imagens e vídeos,
-        como RGB (Red, Green, Blue), YUV (Luminância, Crominância) e HSV (Matiz, Saturação, Valor). Compreender como esses espaços de cores funcionam é importante
-        para realizar operações de processamento de vídeo.
-      </p> 
-      <p class="section-content">
-        <b>Detecção de Movimento</b>: A detecção de movimento é uma técnica importante para analisar mudanças na posição dos objetos em uma sequência de
-        quadros de vídeo. Ela pode ser utilizada para rastreamento de objetos, detecção de atividades suspeitas, análise de movimento humano, entre outras aplicações.
-      </p> 
-      <p class="section-content">
-        <b>Segmentação de Imagem</b>: A segmentação de imagem envolve a subdivisão de uma imagem em regiões ou objetos distintos. Pode ser utilizada para extrair áreas de interesse,
-        realizar contagem de objetos, detecção de bordas, entre outras tarefas.
-      </p>  
-      
+
     </p>
   </div>
 
   <div class="section">
     <h2 class="section-title">Materiais e Métodos</h2>
     <p class="section-content">      
-      Este relatório foi divido em três partes. Nesta primeira parte do laboratório, iremos preparar o ambiente e executar as atividades iniciais 
-      por meio do 
-      <a href="https://moodle.ufabc.edu.br/pluginfile.php/576663/mod_resource/content/2/L1_parte1_ambiente_n_opencv.txt" download>
-        arquivo de configuração Ambiente Miniconda e OpenCV 4.7 para o Ubuntu 22.04
-      </a>. 
-      Em seguida, na parte 2, vamos explorar o processamento básico de imagens e vídeos, estudando diferentes
-      operações por meio de programas fornecidos. Na parte 3, iremos obter fotos e vídeos utilizando uma webcam,
-      salvando os arquivos para uso futuro.
+      Este relatório foi divido em duas partes. Nesta primeira parte do laboratório, aplicaremos o métodos de filtragem de Média, Gaussiano, Mediano e Bilateral nas imagens do Lab1 - parte 3 e salvaremos a imagens para comparação. 
+      Em seguida, na parte 2, com o programa que faz a leitura da webcam aplicaremos filtros de Média, Gaussiano, Mediano e Bilateral e salvaremos a imagens para comparação. 
     </p>
     <h2 class="section-title">Materiais</h2>
     <p class="section-content">
@@ -143,282 +129,22 @@
 
     <h2 class="section-title">Métodos</h2>
     <p class="section-content">
-      Foi acessado o moodle e seguido as instruções fornecidas no arquivo de configuração do ubuntu 22.04 para preparar o ambiente de desenvolvimento no Ubuntu com o OpenCV.
-      Após isso foi feito download dos arquivos do Laboratório 1 - Parte 2 para o diretorio de desenvolvimento no computador.
-    </p>
-    <p class="section-content">Foi executado cada um dos programas fornecidos nas atividades B, C e D da parte 2 do laboratório, conforme as instruções específicas. Observe os resultados obtidos
-      e faça as modificações solicitadas em cada programa, documentando as alterações realizadas e explicando detalhadamente as soluções encontradas.
-    </p>
-    <p class="section-content">Foram utilizados os programas corrigidos da parte 2 para obter as fotos e vídeos solicitados na parte 3 do laboratório. Foram gravados os arquivos no computador, garantindo que sejam
-      Foi utilizado um editor de imagem para compor as fotos individuais em uma foto geral para criar uma foto-montagem com os avatares da equipe
-    </p>   
-    <p class="section-content">
-      Abaixo seguie o código de cada script executado juntamento com seu diagrama de blocos e descrição de funcionamento:
+      ...
     </p>
     
-    <div class="title">L1_1_img.py</div>
+    <div class="title">Titulo Imagem</div>
     <div class="code-container" id="component-1">
       <textarea readonly>
-  import numpy as np
-  import cv2 as cv
-  
-  img = cv.imread('messi5.jpg',0)
-  cv.imshow('image',img)
-  k = cv.waitKey(0)
-  if k == 27:         # wait for ESC key to exit
-  cv.destroyAllWindows()
-  elif k == ord('s'): # wait for 's' key to save and exit
-  cv.imwrite('messigray.png',img)
-  cv.destroyAllWindows()
+        codigo
       </textarea>
       <button class="copy-button" onclick="copyCode('component-1')">Copiar</button>
     </div>
     <div class="title">Diagrama de Blocos L1_1_img.py</div>
     <div>
-      <img src="./img/Diagrama_L1_img.py.png" alt="Diagrama" class="fluxograma">
+      <!-- <img src="./img/Diagrama_L1_img.py.png" alt="Diagrama" class="fluxograma"> -->
     </div>
     <div class="section-content">
-      O código lê uma imagem em escala de cinza, a exibe em uma janela e aguarda a interação do usuário. Se a tecla "ESC" for pressionada,
-      a janela é fechada. Se a tecla "s" for pressionada, a imagem é salva em um arquivo PNG e a janela é fechada. 
-      
-      Por que a janela aberta não mostra a imagem colorida ? 
-      Devido à utilização do parâmetro 0 no método cv.imread('messi5.jpg', 0), esse parâmetro indica que a imagem será lida no modo de escala de cinza. 
-    </div>
-
-    <div class="title">L1_2_video.py</div>
-    <div class="code-container" id="component-1">
-      <textarea readonly>
-  import time
-  import numpy as np
-  import cv2 as cv
-  
-  cap = cv.VideoCapture('big_buck_bunny.mp4')
-  
-  while(cap.isOpened()):
-      ret, frame = cap.read()
-      
-      if ret==True:
-          # show the frame
-          cv.imshow('frame',frame)
-  
-          #wait next frame by 40ms - 25fps
-          time.sleep(1/25.0) 
-          
-          if cv.waitKey(1) & 0xFF == ord('q'):
-              break
-      else:
-          break
-                  
-  cap.release()
-  cv.destroyAllWindows()
-        
-      </textarea>
-      <button class="copy-button" onclick="copyCode('component-1')">Copiar</button>
-    </div>
-    <div class="title">L1_2_video_mod.py</div>
-    <div class="code-container" id="component-1">
-      <textarea readonly>
-  import time
-  import numpy as np
-  import cv2 as cv
-  
-  cap = cv.VideoCapture('big_buck_bunny.mp4')
-  
-  while(cap.isOpened()):
-      ret, frame = cap.read()
-      
-      if ret==True:
-          # show the frame
-          cv.imshow('frame',frame)
-  
-          #wait next frame by 40ms - 25fps
-          time.sleep(1/25.0) 
-          
-          if cv.waitKey(1) & 0xFF == ord('q'):
-              break
-      else:
-          break
-                  
-  cap.release()
-  cv.destroyAllWindows()
-        
-      </textarea>
-      <button class="copy-button" onclick="copyCode('component-1')">Copiar</button>
-    </div>
-
-    <div>
-      <img src="./img/Diagrama_L2_video.py.png" alt="Diagrama" class="fluxograma">
-    </div>
-    <div class="section-content">
-      O código lê um arquivo de vídeo, reproduz cada quadro do vídeo em uma janela, aguarda um tempo específico entre os quadros e permite que o 
-      usuário interrompa a reprodução pressionando a tecla "q".  A alteração de velocidade de exibição ocorre através do uso da função time.sleep().
-      Para ajustar a velocidade de exibição, basta modificar o valor 1/25.0 para o valor desejado. Por exemplo, se quisermos aumentar a velocidade de
-      reprodução para 50 FPS, podemos alterar para 1/50.0. Da mesma forma, se quisermos diminuir para 10 FPS, podemos usar 1/10.0.
-      A modificação foi feita ao adicionar um trecho de código que verifica se a tecla pressionada é 'x'. Se a tecla 'x' for pressionada, o método 
-      cv.imwrite() é chamado para salvar o quadro atual da câmera em um arquivo chamado "foto1.png". Em seguida, uma mensagem é exibida no console 
-      confirmando que a foto foi salva.
-    </div>
-    <div class="title">L1_3_webcam.py</div>
-
-    <div class="code-container" id="component-1">
-      <textarea readonly>
-    import numpy as np
-    import cv2 as cv
-    
-    cap = cv.VideoCapture(0)
-    
-    if not cap.isOpened():
-        print("Cannot open camera")
-        exit()
-        
-    while True:
-        # Capture frame-by-frame
-        ret, frame = cap.read()
-        # if frame is read correctly ret is True
-        if not ret:
-            print("Can't receive frame (stream end?). Exiting ...")
-            break
-        
-        # Display the resulting frame
-        cv.imshow('frame', frame)
-        
-        if cv.waitKey(1) == ord('q'):
-            break
-    
-    # When everything done, release the capture
-    cap.release()
-    cv.destroyAllWindows()
-      </textarea>
-    
-    <div class="title">L1_3_webcam_mod.py</div>
-      <textarea readonly>
-    import numpy as np
-    import cv2 as cv
-    cap = cv.VideoCapture(0)
-    
-    # Get current width of frame
-    width = cap.get(cv.CAP_PROP_FRAME_WIDTH)   # float
-    # Get current height of frame
-    height = cap.get(cv.CAP_PROP_FRAME_HEIGHT) # float
-    # Define Video Frame Rate in fps
-    fps = 10.0
-    
-    # Define the codec and create VideoWriter object
-    fourcc = cv.VideoWriter_fourcc(*'XVID')
-    out = cv.VideoWriter('saida.avi', fourcc, fps, (int(width),int(height)) )
-    
-    while cap.isOpened():
-        ret, frame = cap.read()
-        if not ret:
-            print("Can't receive frame (stream end?). Exiting ...")
-            break
-        frame = cv.flip(frame, 0)
-        # write the flipped frame
-        out.write(frame)
-        cv.imshow('frame', frame)
-        if cv.waitKey(1) == ord('q'):
-            break
-    
-    # Release everything if job is finished
-    cap.release()
-    out.release()
-    cv.destroyAllWindows()    
-        </textarea>
-      <button class="copy-button" onclick="copyCode('component-1')">Copiar</button>
-    </div>
-    <div>
-      <img src="./img/Diagrama_L1_3_webcam.py.png" alt="Diagrama" class="fluxograma">
-      <div class="section-content">
-        O código carrega uma imagem, exibe-a em uma janela e espera que o usuário pressione a tecla "ESC" para fechar as janelas ou 
-        a tecla "s" para salvar a imagem em um arquivo antes de fechar as janelas. A modificação foi feita ao adicionar um trecho de
-        código que verifica se a tecla pressionada é 'x'. Se a tecla 'x' for pressionada, o método cv.imwrite() é chamado para salvar
-        o quadro atual da câmera em um arquivo chamado "foto1.png". Em seguida, uma mensagem é exibida no console confirmando que a foto
-        foi salva.
-      </div>
-    </div>
-    <div class="title">L1_4_webcap.py</div>
-    <div class="code-container" id="component-1">
-      <textarea readonly>
-  import numpy as np
-  import cv2 as cv
-  cap = cv.VideoCapture(0)
-  
-  # Get current width of frame
-  width = cap.get(cv.CAP_PROP_FRAME_WIDTH)   # float
-  # Get current height of frame
-  height = cap.get(cv.CAP_PROP_FRAME_HEIGHT) # float
-  # Define Video Frame Rate in fps
-  fps = 10.0
-  
-  # Define the codec and create VideoWriter object
-  fourcc = cv.VideoWriter_fourcc(*'XVID')
-  out = cv.VideoWriter('saida.avi', fourcc, fps, (int(width),int(height)) )
-  
-  while cap.isOpened():
-      ret, frame = cap.read()
-      if not ret:
-          print("Can't receive frame (stream end?). Exiting ...")
-          break
-      frame = cv.flip(frame, 0)
-      # write the flipped frame
-      out.write(frame)
-      cv.imshow('frame', frame)
-      if cv.waitKey(1) == ord('q'):
-          break
-  
-  # Release everything if job is finished
-  cap.release()
-  out.release()
-  cv.destroyAllWindows()    
-      </textarea>
-      <div class="title">L1_4_webcap_mod.py</div>
-      <div class="code-container" id="component-1">
-      <textarea readonly>
-  import numpy as np
-  import cv2 as cv
-  cap = cv.VideoCapture(0)
-  
-  # Get current width of frame
-  width = cap.get(cv.CAP_PROP_FRAME_WIDTH)   # float
-  # Get current height of frame
-  height = cap.get(cv.CAP_PROP_FRAME_HEIGHT) # float
-  # Define Video Frame Rate in fps
-  fps = 10.0
-  
-  # Define the codec and create VideoWriter object
-  fourcc = cv.VideoWriter_fourcc(*'XVID')
-  out = cv.VideoWriter('saida.avi', fourcc, fps, (int(width),int(height)) )
-  
-  while cap.isOpened():
-      ret, frame = cap.read()
-      if not ret:
-          print("Can't receive frame (stream end?). Exiting ...")
-          break
-      frame = cv.flip(frame, 0)
-      # write the flipped frame
-      out.write(frame)
-      cv.imshow('frame', frame)
-      if cv.waitKey(1) == ord('q'):
-          break
-  
-  # Release everything if job is finished
-  cap.release()
-  out.release()
-  cv.destroyAllWindows()    
-      </textarea>
-      <button class="copy-button" onclick="copyCode('component-1')">Copiar</button>
-    </div>
-    <div>
-      <img src="./img/Diagrama_L1_4_webcam.py.png" alt="Diagrama" class="fluxograma">
-    </div>
-    <div class="section-content">
-      O código captura o vídeo da câmera, inverte cada quadro verticalmente, exibe o vídeo em uma janela e salva o vídeo invertido em um arquivo "saida.avi". 
-      O loop continua até que o usuário pressione a tecla 'q', momento em que o programa é encerrado e os recursos são liberados.
-      A principal modificação foi feita na definição da taxa de quadros (fps) para 25.0, o que proporcionará uma velocidade de exibição adequada para o vídeo.
-
-    Além disso, a função cv.waitKey() foi modificada para receber como argumento o tempo de espera calculado a partir da taxa de quadros. Utilizamos int(1000 / fps)
-    para obter o tempo em milissegundos. Isso garantirá que cada quadro seja exibido pelo tempo adequado antes de passar para o próximo quadro. Essa modificação garante
-    uma velocidade de exibição fluida e compatível com a taxa de quadros do vídeo.
+      Comentario... resultados
     </div>
   </div>
   <div class="section">
@@ -427,43 +153,14 @@
       Durante a execução das atividades propostas, foram obtidos os seguintes resultados:
     </p>
     <p class="section-content">
-      Parte 2, Atividade B: Observou-se que ao executar o programa "L1_2_video.py", a sequência de imagens do vídeo foi exibida em uma janela do sistema Linux. 
-      Para alterar a velocidade de exibição das imagens, foram feitas modificações no programa para acelerar e desacelerar a reprodução. A explicação para a alteração
-      de velocidade está relacionada ao controle do tempo entre a exibição de cada quadro.
-    </p>
-
-    <p class="section-content">
-      Parte 2, Atividade C: Ao executar o programa "L1_3_webcam.py", foi possível capturar imagens da câmera instalada no computador e exibi-las em sequência em uma
-      janela do sistema Linux. A modificação realizada no programa permitiu salvar uma imagem da câmera em um arquivo "foto1.png" ao pressionar a tecla 'x' no teclado. 
-      A solução foi implementada utilizando eventos de teclado e a função apropriada do OpenCV para salvar a imagem.
-    </p>
-    <p class="section-content">
-      Parte 2, Atividade D: Utilizando o programa "L1_4_webcap.py", foram lidas as imagens da câmera, exibidas em uma nova janela do sistema Linux, e ao pressionar a tecla "q",
-      toda a sequência de imagens foi salva em um arquivo de vídeo "saida.avi" no formato AVI. A modificação realizada no programa buscou garantir que as imagens gravadas fossem
-      "normais" e que a velocidade de exibição fosse adequada. A solução envolveu ajustes nas configurações de gravação e exibição de vídeo.
-    </p>
-    <div class="title">Parte 3: A baixo segue a foto integrantes da equipe retirada no OpenCV</div>
-    <p class="section-content">
-      <img src="img/Equipe.png">
-    </p>
-    <div class="title">Parte 3: A baixo segue a foto da montagem da equipe com avatar feito com OpenCV</div>
-    <p class="section-content">
-      <img src="img/Equipe.png">
+      ...
     </p>
   </div>
 
   <div class="section">
     <h2 class="section-title">Conclusões e Comentários Finais</h2>
     <p class="section-content">
-      Neste laboratório, iniciamos os trabalhos com o OpenCV no ambiente Ubuntu, explorando o processamento de vídeo por meio de diferentes 
-      operações. Através da leitura de imagens e vídeos, captura de imagens da câmera e gravação de vídeos, pudemos aprender sobre o uso básico
-      da biblioteca OpenCV e suas funcionalidades.
-
-      Durante as atividades, foram realizadas alterações nos programas fornecidos para melhorar a velocidade de exibição das imagens, permitir o
-      salvamento de imagens da câmera em arquivos, ajustar as configurações de gravação de vídeos e garantir que as imagens gravadas estivessem adequadas.
-
-      Através dessas atividades, foi possível obter conhecimentos fundamentais para o processamento de vídeo e adquirir experiência prática na utilização
-      das ferramentas do OpenCV. Essas habilidades serão essenciais para o desenvolvimento de projetos futuros relacionados ao processamento de vídeo.
+      Neste laboratório, ... .
     </p>
   </div>
 
@@ -472,6 +169,7 @@
   <div class="references">
     <h2 class="references-title">Referências</h2>
     <ol class="reference-list">
+      <li class="reference-item">OpenCV. "Smoothing Images (OpenCV-Python Tutorials)": <link href="https://docs.opencv.org/4.x/d4/d13/tutorial_py_filtering.html"> https://docs.opencv.org/4.x/d4/d13/tutorial_py_filtering.html</li>
       <li class="reference-item"> MINICHINO, J. HOWSE, J., Learning OpenCV 3 Computer Vision with Python, 2nd Ed, Packt
         Publishing, 2015</li>
       <li class="reference-item">Tutorial OpenCV e Python: <link href="https://docs.opencv.org/master/d6/d00/tutorial_py_root.html"> https://docs.opencv.org/master/d6/d00/tutorial_py_root.html  </li>
