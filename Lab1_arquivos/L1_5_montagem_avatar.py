@@ -56,12 +56,12 @@ def recortar_figura(img: str, board: int, resized: bool, scale: int):
     
     frame = frame[board:-board, board:-board]
 
-    cv2.imshow("Imagem Recortada", frame)
+    # cv2.imshow("Imagem Recortada", frame)
     cv2.imwrite(filename='./img/avatar1_recortada.jpg', img = frame)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
     return frame[board:-board, board:-board]
 
-avatar1_img = recortar_figura(img="./img/avatar1.jpeg", board= 5, resized= True, scale = 2)
-# team_img = adicionar_avatar(img_origin="./img/Equipe.png", img_add=f"./img/avatar1_recortada.jpg", x = 165, y=10, fl=False)
+avatar1_img = recortar_figura(img="./img/avatar2.jpg", board= 48, resized= True, scale = 4)
+team_img = adicionar_avatar(img_origin="./img/Equipe.png", img_add=f"./img/avatar1_recortada.jpg", x = 174, y=18, fl=False)
 
