@@ -15,18 +15,14 @@ def adicionar_avatar(img_origin: str, img_add: str, x: int, y: int, fl: bool = F
     # Obter as dimensões da figura
     altura_img, largura_img, _ = imagem.shape
 
-    if altura_img >= altura_figura or largura_img >= largura_figura or fl == True:
-
+    if altura_figura >= altura_img or largura_figura >= largura_img or fl == True:
         # Obter as dimensões da figura
-        altura_img, largura_img = altura_img//4, largura_img//4
+        largura_figura, altura_figura = largura_figura//5, altura_figura//5
 
-        new_size = (altura_img, largura_img)
+        new_size = (largura_figura, altura_figura)
 
         # Redimensionar a imagem
-        resized_image = cv2.resize(imagem, new_size)
-
-        # Obter as dimensões da figura
-        altura_img, largura_img, _ = resized_image.shape
+        figura = cv2.resize(figura, new_size)
 
     # Definir a posição da figura na imagem (supondo posição no canto superior esquerdo)
     posicao_x = x
@@ -38,18 +34,34 @@ def adicionar_avatar(img_origin: str, img_add: str, x: int, y: int, fl: bool = F
     inicio_y = posicao_y
     fim_y = posicao_y + altura_figura
 
-    # Redimensionar o avatar para a mesma forma da região de interesse
-    avatar = cv2.resize(imagem, (fim_x - inicio_x, fim_y - inicio_y))
-
     # Adicionar a figura à imagem
-    imagem[inicio_y:fim_y, inicio_x:fim_x] = avatar
+    imagem[inicio_y:fim_y, inicio_x:fim_x] = figura
 
     # Exibir a imagem resultante
     cv2.imshow("Imagem com a figura", imagem)
-    cv2.imwrite("new_img.png", imagem)
+    cv2.imwrite("./img/Equipe_avatar.png", imagem)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
 
     return imagem
 
-new = adicionar_avatar("./img/Equipe.png", "./img/goku.png", 0, 0, True)
+def recortar_figura(img: str, board: int, resized: bool, scale: int):
+    """
+    """
+    frame = cv2.imread(img)
+
+    if resized == True:
+        largura, altura, _ = frame.shape
+        frame = cv2.resize(frame, (largura//scale, altura//scale))
+    
+    frame = frame[board:-board, board:-board]
+
+    cv2.imshow("Imagem Recortada", frame)
+    cv2.imwrite(filename='./img/avatar1_recortada.jpg', img = frame)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
+    return frame[board:-board, board:-board]
+
+avatar1_img = recortar_figura(img="./img/avatar1.jpeg", board= 5, resized= True, scale = 2)
+# team_img = adicionar_avatar(img_origin="./img/Equipe.png", img_add=f"./img/avatar1_recortada.jpg", x = 165, y=10, fl=False)
+
